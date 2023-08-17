@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +23,12 @@ import { MatButtonModule } from '@angular/material/button';
   ],
 })
 export class PrestamoFormComponent {
+  @Input() prestamoDetail: Prestamo = {
+    isbn: '',
+    identificacionUsuario: '',
+    tipoUsuario: TipoUsuarioPrestamo.AFILIADO,
+  };
+
   @Output() onCreatePrestamo = new EventEmitter<Prestamo>();
 
   availableOptions = [
@@ -30,9 +36,9 @@ export class PrestamoFormComponent {
     TipoUsuarioPrestamo.EMPLEADO,
     TipoUsuarioPrestamo.INVITADO,
   ];
-  selectedTipoUsuario = TipoUsuarioPrestamo.AFILIADO;
-  isbn: string = '';
-  identificacionUsuario: string = '';
+  selectedTipoUsuario = this.prestamoDetail.tipoUsuario;
+  isbn: string = this.prestamoDetail.isbn;
+  identificacionUsuario: string = this.prestamoDetail.identificacionUsuario;
 
   getOptionLabel(option: TipoUsuarioPrestamo) {
     switch (option) {

@@ -33,7 +33,11 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="onClickRow(row)"
+    ></tr>
   </table>
 
   <mat-paginator
@@ -42,4 +46,9 @@
     aria-label="Select page"
   >
   </mat-paginator>
+
+  <app-prestamo-details
+    [hidden]="prestamoDetailsHidden"
+    [idPrestamo]="idPrestamo"
+  ></app-prestamo-details>
 </div>

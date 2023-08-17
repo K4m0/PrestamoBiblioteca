@@ -10,14 +10,17 @@ export class PrestamoService {
   private prestamosSubject: BehaviorSubject<Prestamo[]> = new BehaviorSubject(
     [] as Prestamo[]
   );
-
   constructor(private http: HttpClient) {}
 
   URL: string = 'https://localhost:44382/api/Prestamo/';
 
-  getPrestamoById(prestamoId: number) {
-    let query = `${this.URL}${prestamoId}`;
-    return this.http.get(query);
+  getPrestamoById(idPrestamo: string): Observable<Prestamo> {
+    let query = `${this.URL}${idPrestamo}`;
+    return this.http.get<Prestamo>(query).pipe(
+      tap((response: any) => {
+        console.log(response);
+      })
+    );
   }
 
   getAllPrestamos(): Observable<Prestamo[]> {

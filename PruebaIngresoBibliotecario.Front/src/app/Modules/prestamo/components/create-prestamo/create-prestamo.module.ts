@@ -5,7 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { PrestamoFormComponent } from '../prestamo-form/prestamo-form.component';
 import { MatButtonModule } from '@angular/material/button';
 
-const routes: Routes = [{ path: '', component: CreatePrestamoComponent }];
+const routes: Routes = [
+  {
+    path: '',
+    component: CreatePrestamoComponent,
+  },
+];
 
 @NgModule({
   declarations: [CreatePrestamoComponent],

@@ -5,7 +5,7 @@ import { PrestamoComponent } from './prestamo.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
-import { PrestamoFormComponent } from './components/prestamo-form/prestamo-form.component';
+import { PrestamoDetailsModule } from './components/prestamo-details/prestamo-details.module';
 
 const routes: Routes = [
   { path: '', component: PrestamoComponent },
@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'createPrestamo',
     loadChildren: () =>
       import('./components/create-prestamo/create-prestamo.module').then(
-        (c) => c.CreatePrestamoModule
+        (m) => m.CreatePrestamoModule
       ),
   },
 ];
@@ -26,7 +26,7 @@ const routes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatButtonModule,
-    PrestamoFormComponent,
+    PrestamoDetailsModule,
   ],
 })
 export class PrestamoModule {}

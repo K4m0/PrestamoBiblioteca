@@ -20,6 +20,9 @@ import { Router } from '@angular/router';
 export class PrestamoComponent implements AfterViewInit, OnInit, OnDestroy {
   private prestamoServiceSubscription: Subscription | undefined;
 
+  idPrestamo: string = '';
+  prestamoDetailsHidden: boolean = true;
+
   constructor(
     private prestamoService: PrestamoService,
     private router: Router
@@ -57,5 +60,11 @@ export class PrestamoComponent implements AfterViewInit, OnInit, OnDestroy {
 
   createPrestamo() {
     this.router.navigate(['/createPrestamo']);
+  }
+
+  onClickRow(row: Prestamo) {
+    //console.log(row.id);
+    this.idPrestamo = row.id!;
+    this.prestamoDetailsHidden = !this.prestamoDetailsHidden;
   }
 }

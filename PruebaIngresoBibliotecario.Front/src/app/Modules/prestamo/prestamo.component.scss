@@ -10,3 +10,16 @@ table thead {
   margin: 1rem;
   float: right;
 }
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
