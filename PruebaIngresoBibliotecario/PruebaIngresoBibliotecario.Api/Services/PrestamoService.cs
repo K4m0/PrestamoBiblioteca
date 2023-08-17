@@ -2,6 +2,7 @@
 using PruebaIngresoBibliotecario.Api.Models;
 using PruebaIngresoBibliotecario.Api.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PruebaIngresoBibliotecario.Api.Services
@@ -22,6 +23,11 @@ namespace PruebaIngresoBibliotecario.Api.Services
         public async Task<Prestamo> GetPrestamoAsync(Guid idPrestamo)
         {
             return await _prestamoRepository.GetPrestamo(idPrestamo);
+        }
+
+        public async Task<List<Prestamo>> GetAllPrestamosAsync( )
+        {
+            return await _prestamoRepository.GetAllPrestamos();
         }
 
         private void CalculateFechaMaximaDevolucion(Prestamo prestamo)

@@ -2,6 +2,7 @@
 using PruebaIngresoBibliotecario.Api.Models;
 using PruebaIngresoBibliotecario.Infrastructure;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,7 +37,14 @@ namespace PruebaIngresoBibliotecario.Api.Repositories
             return prestamo;
         }
 
-        
+        public async Task<List<Prestamo>> GetAllPrestamos()
+        {
+            var prestamos = await _persistenceContext.Prestamo.ToListAsync();
+
+            return prestamos;
+        }
+
+
 
     }
 }

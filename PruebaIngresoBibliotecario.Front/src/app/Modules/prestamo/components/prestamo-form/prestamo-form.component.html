@@ -1,0 +1,25 @@
+<mat-form-field>
+  <mat-label>Isbn</mat-label>
+  <input matInput [(ngModel)]="isbn" />
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Identificacion Usuario</mat-label>
+  <input matInput [(ngModel)]="identificacionUsuario" />
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Tipo Usuario</mat-label>
+  <mat-select [(value)]="selectedTipoUsuario">
+    <mat-option *ngFor="let option of availableOptions" [value]="option">
+      {{ getOptionLabel(option) }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button
+  type="button"
+  mat-raised-button
+  class="createButton"
+  (click)="createPrestamo()"
+>
+  Create
+</button>

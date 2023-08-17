@@ -55,12 +55,33 @@ namespace PruebaIngresoBibliotecario.Api.Controllers
                 var prestamoResponse = await _prestamoService.GetPrestamoAsync(idPrestamo);
 
                 if (prestamoResponse == null)
-                    return NotFound(new { mensaje = string.Format("El prestamo con id {0} no existe", idPrestamo )});
+                    return NotFound(new { mensaje = string.Format("El prestamo con id {0} no existe", idPrestamo) });
 
                 return Ok(prestamoResponse);
             }
             catch (Exception ex)
             {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllPrestamo()
+        {
+            try
+            {
+                var prestamos = await _prestamoService.GetAllPrestamosAsync();
+
+                if(prestamos.Count == 0)
+                {
+                    return NotFound(new { mensaje = string.Format("No hay prestamos creados") });
+                }
+
+                return Ok(prestamos);
+            }
+            catch (Exception ex)
+            {
+
                 return BadRequest(ex.Message);
             }
         }
